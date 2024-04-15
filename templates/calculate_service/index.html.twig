@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calculate{% endblock %}
+
+{% block body %}
+
+<head>
+    <title>Calculate</title>
+</head>
+
+<body>
+    <main>
+        <div class="calculate">
+            <a href="calculate"> <h1>CASIO Graph 35+</h1> </a>
+                <form action="{{ path('app_calculate_service') }}" method="get">
+                    <div class="values">
+                        <div>
+                            <label for="value1"></label>
+                            <input type="number" class="input" id="value1" name="value1" placeholder="première valeur">
+                        </div>
+                        <div>
+                            <label for="value2"></label>
+                            <input type="number" class="input" id="value2" name="value2" placeholder="deuxième valeur">
+                        </div>
+                    </div> 
+                    <div id="screen"> {{ result }}
+
+                        {% for result in results %}
+
+                        <span> {{ result.number }} </span>
+
+                        {% endfor %}
+                    </div>
+                    <div class="buttons-container">
+                        <div>
+                            <button name="operator" id="historyBtn" value="h">H+</button>
+                            <button name="operator" id="powerBtn" value="false">Turn ON</button>
+                        </div>
+                        <div>
+                            <input type="submit" class="operator"  name="operator" value="+">
+                            <input type="submit" class="operator"  name="operator" value="-">
+                        </div>
+                        <div>    
+                            <input type="submit" class="operator"  name="operator" value="/">
+                            <input type="submit" class="operator" name="operator" value="*">
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </main>
+</body>
+
+{% endblock %}
+
